@@ -34,17 +34,17 @@ function getUserInfo() {
             renderAvatar(res.data)
         },
         //不论成功还是失败，最终都会调用complete回调函数
-        complete: function (res) {
-            // console.log('执行了complete');
-            // console.log(res);
-            //在complete 回调函数中，可以使用res.responseJSON拿到服务器响应回来的数据
-            if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
-                //1、强中清空token
-                localStorage.removeItem('token');
-                //2、强制调转要登录页面
-                location.href = '/login.html'
-            }
-        }
+        // complete: function (res) {
+        //     // console.log('执行了complete');
+        //     // console.log(res);
+        //     //在complete 回调函数中，可以使用res.responseJSON拿到服务器响应回来的数据
+        //     if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
+        //         //1、强中清空token
+        //         localStorage.removeItem('token');
+        //         //2、强制调转要登录页面
+        //         location.href = '/login.html'
+        //     }
+        // }
     })
 }
 
@@ -57,7 +57,7 @@ function renderAvatar(user) {
     //按需渲染用户的头像
     if (user.user_pic !== null) {
         //渲染图片头像
-        $('.layui-nav-img').attr('src', user.user._pic).show();
+        $('.layui-nav-img').attr('src', user.user_pic).show();
         $('.text-avatar').hide();
     } else {
         //渲染文本头像
